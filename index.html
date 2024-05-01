@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Ипотечный калькулятор</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="container_header">
+                <h2>Расчёт стоимости</h2>
+                <p class="subtitle">Сделайте квартиру доступной любому клиенту</p>
+            </div>
+            <div id="calculator">
+                <div id="settings">
+                    <div class="block">
+                        <div class="block_header">
+                            <h4>Выберите тип оплаты</h4>
+                        </div>
+                        <div id="payment_types">
+                            <input type="radio" id="payment_type_2341" name="payment_type" value="2341">
+                            <label class="card" for="payment_type_2341"><span>Оплата 100%</span></label>
+                            <input type="radio" id="payment_type_3211" name="payment_type" value="3211">
+                            <label class="card" for="payment_type_3211"><span>Транш</span></label>
+                            <input type="radio" id="payment_type_2321" name="payment_type" value="2321">
+                            <label class="card" for="payment_type_2321"><span>Рассрочка</span></label>
+                            <input type="radio" id="payment_type_6533" name="payment_type" value="6533" checked>
+                            <label class="card" for="payment_type_6533"><span>Ипотека с ПВ</span></label>
+                            <input type="radio" id="payment_type_3424" name="payment_type" value="3424">
+                            <label class="card" for="payment_type_3424"><span>Ипотека без ПВ</span></label>
+                        </div>
+                    </div>
+                    <div class="block">
+                        <div class="block_header">
+                            <h4>Выберите банк</h4>
+                        </div>
+                        <div id="banks">
+                            <input type="radio" id="bank_2341" name="bank" value="2341">
+                            <label class="card" for="bank_2341"><img src="./images/banks/Абсолют.svg" alt="Абсолют Банк"></label>
+                            <input type="radio" id="bank_3211" name="bank" value="3211">
+                            <label class="card" for="bank_3211"><img src="./images/banks/Ак Барс.svg" alt="Ак Барс Банк"></label>
+                            <input type="radio" id="bank_2321" name="bank" value="2321">
+                            <label class="card" for="bank_2321"><img src="./images/banks/Альфа банк.svg" alt="Альфа Банк"></label>
+                            <input type="radio" id="bank_6533" name="bank" value="6533">
+                            <label class="card" for="bank_6533"><img src="./images/banks/ВТБ.svg" alt="ВТБ"></label>
+                            <input type="radio" id="bank_3422" name="bank" value="3424">
+                            <label class="card" for="bank_3422"><img src="./images/banks/Газпром.svg" alt="Газпром Банк"></label>
+                            <input type="radio" id="bank_3453" name="bank" value="3453">
+                            <label class="card" for="bank_3453"><img src="./images/banks/Дом рф.svg" alt="Дом рф"></label>
+                            <input type="radio" id="bank_3539" name="bank" value="3539" checked>
+                            <label class="card" for="bank_3539"><img src="./images/banks/Кубань кредит.svg" alt="Кубань кредит"></label>
+                            <input type="radio" id="bank_1023" name="bank" value="1023">
+                            <label class="card" for="bank_1023"><img src="./images/banks/Металлинвестбанк.svg" alt="Металлинвестбанк"></label>
+                        </div>
+                    </div>
+                    <div class="block">
+                        <div class="block_header">
+                            <h4>Выберите программу</h4>
+                        </div>
+                        <div class="program">
+                            <div class="sub-block">
+                                <div class="input">
+                                    <p class="subtitle">Субсидирование</p>
+                                    <div class="selector">
+                                        <div class="toggle">
+                                            <div class="selection"></div>
+                                            <input id="subsidization_on" type="radio" name="subsidization" value="1">
+                                            <label class="on" for="subsidization_on">Да</label>
+                                            <input id="subsidization_off" type="radio" name="subsidization" value="0">
+                                            <label class="off" for="subsidization_off">Нет</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input">
+                                    <p class="subtitle">Несколько заёмщиков</p>
+                                    <div class="selector">
+                                        <div class="toggle">
+                                            <div class="selection"></div>
+                                            <input id="more_borrower_on" type="radio" name="more_borrower" value="1">
+                                            <label class="on" for="more_borrower_on">Да</label>
+                                            <input id="more_borrower_off" type="radio" name="more_borrower" value="0">
+                                            <label class="off" for="more_borrower_off">Нет</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="input full-width">
+                                <p class="subtitle">Программа</p>
+                                <select name="program">
+                                    <option value="3412">КОМБО Семейная (до 15 млн)</option>
+                                    <option value="7235">Господдержка</option>
+                                    <option value="6564">Военная</option>
+                                </select>
+                                <div class="variants">
+                                    <button class="variant" data-value="3412">Семейная</button>
+                                    <button class="variant" data-value="7235">Господдержка</button>
+                                    <button class="variant" data-value="6564">Военная</button>
+                                </div>
+                            </div>
+                            <div class="sub-block">
+                                <div class="input">
+                                    <p class="subtitle">ПВ, ₽</p>
+                                    <input type="text" name="down_payment_money" class="integer" placeholder="2 633 878">
+                                    <div class="variants">
+                                        <button class="variant" data-value="1000000">1 000 000 ₽</button>
+                                        <button class="variant" data-value="2000000">2 000 000 ₽</button>
+                                        <button class="variant" data-value="3000000">3 000 000 ₽</button>
+                                    </div>
+                                </div>
+                                <div class="input">
+                                    <p class="subtitle">ПВ, %</p>
+                                    <input type="text" name="down_payment_percent" class="float" placeholder="20.1">
+                                    <div class="variants">
+                                        <button class="variant" data-value="15.1">15.1 %</button>
+                                        <button class="variant" data-value="20.1">20.1 %</button>
+                                        <button class="variant" data-value="30.1">30.1 %</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sub-block">
+                                <div class="input">
+                                    <p class="subtitle">Траншевый взнос, ₽</p>
+                                    <input type="text" name="tranche_contribution_money" class="integer" placeholder="2 633 878">
+                                    <div class="variants">
+                                        <button class="variant" data-value="1000000">1 000 000 ₽</button>
+                                        <button class="variant" data-value="2000000">2 000 000 ₽</button>
+                                    </div>
+                                </div>
+                                <div class="input">
+                                    <p class="subtitle">Траншевый взнос, %</p>
+                                    <input type="text" name="tranche_contribution_percent" class="float" placeholder="20.1">
+                                    <div class="variants">
+                                        <button class="variant" data-value="15.1">15.1 %</button>
+                                        <button class="variant" data-value="20.1">20.1 %</button>
+                                        <button class="variant" data-value="30.1">30.1 %</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sub-block">
+                                <div class="input">
+                                    <p class="subtitle">Собственные</p>
+                                    <input type="text" name="personal_money" class="integer" placeholder="1 000 000 ₽">
+                                </div>
+                                <div class="input">
+                                    <p class="subtitle">Заимствованные</p>
+                                    <input type="text" name="credit_money" class="integer" placeholder="1 000 000 ₽">
+                                </div>
+                                <div class="input">
+                                    <p class="subtitle">Заёмщиков</p>
+                                    <input type="text" name="credit_people" class="integer" placeholder="2">
+                                </div>
+                                <div class="input">
+                                    <p class="subtitle">Доплата к займу</p>
+                                    <input type="text" name="personal_money" class="integer" placeholder="1 000 000 ₽">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block">
+                        <div class="block_header">
+                            <h4>Выберите акцию</h4>
+                            <button class="add" data-type="promotion">Добавить</button>
+                        </div>
+                        <div id="promotions">
+                            <div class="variants">
+                                <input type="checkbox" id="promotions_3424" name="promotions" value="3424">
+                                <label class="variant" for="promotions_3424"><b>Время-деньги</b></label>
+                                <input type="checkbox" id="promotions_3421" name="promotions" value="3421" checked>
+                                <label class="variant" for="promotions_3421">
+                                    <b>Новогодний переполох</b>
+                                    <span>- 10 000 ₽/м<sup><small>2</small></sup></span>
+                                </label>
+                                <input type="checkbox" id="promotions_6232" name="promotions" value="6232" checked>
+                                <label class="variant" for="promotions_6232">
+                                    <b>Скидка на повторную покупку</b>
+                                    <span>- 100 ₽/м<sup><small>2</small></sup></span>
+                                </label>
+                                <input type="checkbox" id="promotions_3221" name="promotions" value="3221">
+                                <label class="variant" for="promotions_3221"><b>Личная скидка</b></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block">
+                        <div class="block_header">
+                            <h4>Дополнительные услуги <span>+ 580 300 ₽</span></h4>
+                            <button class="add" data-type="advanced">Добавить</button>
+                        </div>
+                        <div id="additional_services">
+                            <div class="sub-block">
+                                <div class="input">
+                                    <p class="subtitle">Вид ремонта</p>
+                                    <select name="repair_type">
+                                        <option value="3412"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12.0559 18H9.16699C8.96236 18 8.79083 17.9308 8.65241 17.7924C8.51398 17.654 8.44477 17.4824 8.44477 17.2778V12.9445C8.44477 12.7399 8.51398 12.5683 8.65241 12.4299C8.79083 12.2915 8.96236 12.2223 9.16699 12.2223H9.88921V10.0556H4.11144C3.71421 10.0556 3.37417 9.91416 3.0913 9.63129C2.80843 9.34842 2.66699 9.00837 2.66699 8.61115V5.72226C2.66699 5.32504 2.80843 4.98499 3.0913 4.70212C3.37417 4.41925 3.71421 4.27782 4.11144 4.27782H5.55588V3.5556C5.55588 3.35097 5.62509 3.17944 5.76352 3.04101C5.90195 2.90259 6.07347 2.83337 6.2781 2.83337H14.9448C15.1494 2.83337 15.3209 2.90259 15.4594 3.04101C15.5978 3.17944 15.667 3.35097 15.667 3.5556V6.44449C15.667 6.64911 15.5978 6.82064 15.4594 6.95907C15.3209 7.09749 15.1494 7.16671 14.9448 7.16671H6.2781C6.07347 7.16671 5.90195 7.09749 5.76352 6.95907C5.62509 6.82064 5.55588 6.64911 5.55588 6.44449V5.72226H4.11144V8.61115H9.88921C10.2864 8.61115 10.6265 8.75259 10.9094 9.03546C11.1922 9.31833 11.3337 9.65837 11.3337 10.0556V12.2223H12.0559C12.2605 12.2223 12.432 12.2915 12.5705 12.4299C12.7089 12.5683 12.7781 12.7399 12.7781 12.9445V17.2778C12.7781 17.4824 12.7089 17.654 12.5705 17.7924C12.432 17.9308 12.2605 18 12.0559 18ZM9.88921 16.5556H11.3337V13.6667H9.88921V16.5556ZM7.00033 5.72226H14.2225V4.27782H7.00033V5.72226Z" fill="#3C3D48"/>
+                                        </svg>
+                                            White Box</option>
+                                    </select>
+                                </div>
+                                <div class="input">
+                                    <p class="subtitle">Дополнительные пакеты</p>
+                                    <select name="advanced">
+                                        <option value="3412">Безопасность</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="variants">
+                                <input type="checkbox" id="additional_service_3421" name="promotions" value="3421" checked>
+                                <label class="variant" for="additional_service_3421">
+                                    <b>Парковочное место №32</b>
+                                    <span>500 000 ₽</span>
+                                </label>
+                                <input type="checkbox" id="additional_service_6232" name="promotions" value="6232">
+                                <label class="variant" for="additional_service_6232"><b>Гараж</b></label>
+                                <input type="checkbox" id="additional_service_3221" name="promotions" value="3221">
+                                <label class="variant" for="additional_service_3221">
+                                    <b>Услуга №3</b>
+                                    <span>- 1000 ₽/м<sup><small>2</small></sup></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block">
+                        <div class="block_header">
+                            <h4>Параметры кредита</h4>
+                        </div>
+                        <div class="sub-block">
+                            <div class="input">
+                                <p class="subtitle">Кредитные средства</p>
+                                <label class="setting-credit-input">
+                                    <input type="text" name="credit_cash" class="integer" placeholder="10 531 520 ₽">
+                                    <span>₽</span>
+                                </label>
+                            </div>
+                            <div class="input sub-block">
+                                <div class="input">
+                                    <p class="subtitle">Срок кредита, лет</p>
+                                    <input type="text" name="credit_term" class="integer" placeholder="30">
+                                </div>
+                                <div class="input">
+                                    <p class="subtitle">Процентная ставка</p>
+                                    <label class="setting-credit-input">
+                                        <input type="text" name="down_payment_percent" class="float" placeholder="6 %">
+                                        <span>%</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="info">
+                    <img class="bank" src="./images/banks/Альфа банк.svg" alt="Альфа банк">
+                    <h2>Новостройка с субсидированием 3 года</h2>
+                    <div class="blocks">
+                        <div class="block">
+                            <div class="row">
+                                <div>
+                                    <p>Стоимость квартиры</p>
+                                    <b>13 103 798 ₽</b>
+                                </div>
+                                <div>
+                                    <p>ПВ</p>
+                                    <b>2 633 878 ₽</b>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block">
+                            <h4>Льготный период</h4>
+                            <div class="row">
+                                <div>
+                                    <p>Ежемесячный платеж</p>
+                                    <b>62 773 ₽</b>
+                                </div>
+                                <div>
+                                    <p>Срок</p>
+                                    <b>30 лет</b>
+                                </div>
+                                <div>
+                                    <p>Ставка</p>
+                                    <b>6 %</b>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block">
+                            <h4>Основной период</h4>
+                            <div class="row">
+                                <div>
+                                    <p>Ежемесячный платеж</p>
+                                    <b>62 773 ₽</b>
+                                </div>
+                                <div>
+                                    <p>Срок</p>
+                                    <b>30 лет</b>
+                                </div>
+                                <div>
+                                    <p>Ставка</p>
+                                    <b>6 %</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button data-action="share">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M14.5 18C13.8056 18 13.2153 17.7569 12.7292 17.2708C12.2431 16.7847 12 16.1944 12 15.5C12 15.3889 12.0069 15.2882 12.0208 15.1979C12.0347 15.1076 12.0556 15.0069 12.0833 14.8958L7.125 11.875C6.91667 12.0972 6.67115 12.2569 6.38846 12.3542C6.10576 12.4514 5.80961 12.5 5.5 12.5C4.80556 12.5 4.21528 12.2569 3.72917 11.7708C3.24306 11.2847 3 10.6944 3 10C3 9.30556 3.24306 8.71528 3.72917 8.22917C4.21528 7.74306 4.80556 7.5 5.5 7.5C5.80556 7.5 6.10069 7.55208 6.38542 7.65625C6.67014 7.76042 6.91667 7.91667 7.125 8.125L12.0833 5.10417C12.0556 4.99306 12.0347 4.89236 12.0208 4.80208C12.0069 4.71181 12 4.61111 12 4.5C12 3.80556 12.2431 3.21528 12.7292 2.72917C13.2153 2.24306 13.8056 2 14.5 2C15.1944 2 15.7847 2.24306 16.2708 2.72917C16.7569 3.21528 17 3.80556 17 4.5C17 5.19444 16.7569 5.78472 16.2708 6.27083C15.7847 6.75694 15.1944 7 14.5 7C14.1904 7 13.8942 6.95139 13.6115 6.85417C13.3288 6.75694 13.0833 6.59722 12.875 6.375L7.91667 9.39583C7.94444 9.50694 7.96528 9.60764 7.97917 9.69792C7.99306 9.78819 8 9.88889 8 10C8 10.1111 7.99306 10.2118 7.97917 10.3021C7.96528 10.3924 7.94444 10.4931 7.91667 10.6042L12.875 13.625C13.0833 13.3889 13.3288 13.2257 13.6115 13.1354C13.8942 13.0451 14.1904 13 14.5 13C15.1944 13 15.7847 13.2431 16.2708 13.7292C16.7569 14.2153 17 14.8056 17 15.5C17 16.1944 16.7569 16.7847 16.2708 17.2708C15.7847 17.7569 15.1944 18 14.5 18ZM14.5 5.5C14.7833 5.5 15.0208 5.40417 15.2125 5.2125C15.4042 5.02083 15.5 4.78333 15.5 4.5C15.5 4.21667 15.4042 3.97917 15.2125 3.7875C15.0208 3.59583 14.7833 3.5 14.5 3.5C14.2167 3.5 13.9792 3.59583 13.7875 3.7875C13.5958 3.97917 13.5 4.21667 13.5 4.5C13.5 4.78333 13.5958 5.02083 13.7875 5.2125C13.9792 5.40417 14.2167 5.5 14.5 5.5ZM5.5 11C5.78333 11 6.02083 10.9042 6.2125 10.7125C6.40417 10.5208 6.5 10.2833 6.5 10C6.5 9.71667 6.40417 9.47917 6.2125 9.2875C6.02083 9.09583 5.78333 9 5.5 9C5.21667 9 4.97917 9.09583 4.7875 9.2875C4.59583 9.47917 4.5 9.71667 4.5 10C4.5 10.2833 4.59583 10.5208 4.7875 10.7125C4.97917 10.9042 5.21667 11 5.5 11ZM14.5 16.5C14.7833 16.5 15.0208 16.4042 15.2125 16.2125C15.4042 16.0208 15.5 15.7833 15.5 15.5C15.5 15.2167 15.4042 14.9792 15.2125 14.7875C15.0208 14.5958 14.7833 14.5 14.5 14.5C14.2167 14.5 13.9792 14.5958 13.7875 14.7875C13.5958 14.9792 13.5 15.2167 13.5 15.5C13.5 15.7833 13.5958 16.0208 13.7875 16.2125C13.9792 16.4042 14.2167 16.5 14.5 16.5Z" fill="#3C3D48"/>
+                            </svg>
+                            Поделиться
+                        </button>
+                        <button data-action="add-deal">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 15H13V13.5H7V15ZM7 12H13V10.5H7V12ZM5.4941 18C5.08137 18 4.72917 17.8531 4.4375 17.5594C4.14583 17.2656 4 16.9125 4 16.5V3.5C4 3.0875 4.14687 2.73438 4.44062 2.44063C4.73437 2.14688 5.0875 2 5.5 2H12L16 6V16.5C16 16.9125 15.853 17.2656 15.5591 17.5594C15.2652 17.8531 14.9119 18 14.4992 18H5.4941ZM11 7V3.5H5.5V16.5H14.5V7H11Z" fill="#3C3D48"/>
+                            </svg>
+                            Создать сделку
+                        </button>
+                    </div>
+                    <div class="share-background">
+                        <div class="share">
+                            <a>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16.75 19.125V4.875C17.2283 4.875 17.6447 5.04951 17.9993 5.39854C18.354 5.74756 18.5312 6.16713 18.5312 6.65724V17.3508C18.5312 17.8409 18.354 18.2591 17.9993 18.6055C17.6447 18.9518 17.2283 19.125 16.75 19.125ZM4.28125 21.5C3.79141 21.5 3.37207 21.3256 3.02324 20.9768C2.67441 20.6279 2.5 20.2086 2.5 19.7188V4.28125C2.5 3.79141 2.67441 3.37207 3.02324 3.02324C3.37207 2.67441 3.79141 2.5 4.28125 2.5H13.1875C13.6658 2.5 14.0822 2.67441 14.4368 3.02324C14.7914 3.37207 14.9688 3.79141 14.9688 4.28125V19.7188C14.9688 20.2086 14.7914 20.6279 14.4368 20.9768C14.0822 21.3256 13.6658 21.5 13.1875 21.5H4.28125ZM20.3125 17.9375V6.0625C20.6753 6.0625 20.964 6.25217 21.1784 6.63151C21.3928 7.01085 21.5 7.38194 21.5 7.74479V16.2552C21.5 16.6181 21.3928 16.9892 21.1784 17.3685C20.964 17.7478 20.6753 17.9375 20.3125 17.9375ZM4.28125 19.7188H13.1875V4.28125H4.28125V19.7188Z" fill="#3C3D48"/>
+                                </svg>
+                                Сгенерировать сторис
+                            </a>
+                            <a>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.625 16.0833L16.1562 12L9.625 7.91667V16.0833ZM4.28125 19C3.79141 19 3.37207 18.8285 3.02324 18.4856C2.67441 18.1427 2.5 17.7305 2.5 17.249V6.74312C2.5 6.2616 2.67441 5.85069 3.02324 5.51042C3.37207 5.17014 3.79141 5 4.28125 5H19.7188C20.2086 5 20.6279 5.17145 20.9768 5.51435C21.3256 5.85726 21.5 6.26946 21.5 6.75097V17.2569C21.5 17.7384 21.3256 18.1493 20.9768 18.4896C20.6279 18.8299 20.2086 19 19.7188 19H4.28125ZM4.28125 17.25H19.7188V6.75H4.28125V17.25Z" fill="#3C3D48"/>
+                                </svg>
+                                Сгенерировать видео
+                            </a>
+                            <a>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.75 17H7C5.61667 17 4.4375 16.5119 3.4625 15.5358C2.4875 14.5596 2 13.3791 2 11.9941C2 10.6091 2.4875 9.43056 3.4625 8.45833C4.4375 7.48611 5.61667 7 7 7H10.75V8.875H7C6.13194 8.875 5.3941 9.17882 4.78646 9.78646C4.17882 10.3941 3.875 11.1319 3.875 12C3.875 12.8681 4.17882 13.6059 4.78646 14.2135C5.3941 14.8212 6.13194 15.125 7 15.125H10.75V17ZM8.25 12.9375V11.0625H15.75V12.9375H8.25ZM13.25 17V15.125H17C17.8681 15.125 18.6059 14.8212 19.2135 14.2135C19.8212 13.6059 20.125 12.8681 20.125 12C20.125 11.1319 19.8212 10.3941 19.2135 9.78646C18.6059 9.17882 17.8681 8.875 17 8.875H13.25V7H17C18.3833 7 19.5625 7.48807 20.5375 8.46422C21.5125 9.44036 22 10.6209 22 12.0059C22 13.3909 21.5125 14.5694 20.5375 15.5417C19.5625 16.5139 18.3833 17 17 17H13.25Z" fill="#3C3D48"/>
+                                </svg>
+                                Сгенерировать ссылку
+                            </a>
+                            <a>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 16.0385L7.33333 11.4231L8.57292 10.1971L11.125 12.7212V4.5H12.875V12.7212L15.4271 10.1971L16.6667 11.4231L12 16.0385ZM6.74312 19.5C6.2616 19.5 5.85069 19.3305 5.51042 18.9916C5.17014 18.6526 5 18.2452 5 17.7692V16.0385H6.75V17.7692H17.25V16.0385H19V17.7692C19 18.2452 18.8285 18.6526 18.4856 18.9916C18.1427 19.3305 17.7305 19.5 17.249 19.5H6.74312Z" fill="#3C3D48"/>
+                                </svg>
+                                Сгенерировать PDF
+                            </a>
+                            <a>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 16.0385L7.33333 11.4231L8.57292 10.1971L11.125 12.7212V4.5H12.875V12.7212L15.4271 10.1971L16.6667 11.4231L12 16.0385ZM6.74312 19.5C6.2616 19.5 5.85069 19.3305 5.51042 18.9916C5.17014 18.6526 5 18.2452 5 17.7692V16.0385H6.75V17.7692H17.25V16.0385H19V17.7692C19 18.2452 18.8285 18.6526 18.4856 18.9916C18.1427 19.3305 17.7305 19.5 17.249 19.5H6.74312Z" fill="#3C3D48"/>
+                                </svg>
+                                Сгенерировать Mini PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="advanced" class="popup-block">
+            <div class="popup">
+                <div class="popup-header">
+                    <button data-action="close">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.0625 15L5 13.9375L8.9375 10L5 6.0625L6.0625 5L10 8.9375L13.9375 5L15 6.0625L11.0625 10L15 13.9375L13.9375 15L10 11.0625L6.0625 15Z" fill="#3C3D48"/>
+                        </svg>
+                    </button>
+                    <h2>Добавление услуги</h2>
+                </div>
+                <div class="popup-body">
+                    <div class="block">
+                        <div class="input">
+                            <p class="subtitle">Тип услуги</p>
+                            <select name="type">
+                                <option value="0">Своя</option>
+                                <option value="1">Парковка</option>
+                            </select>
+                            <div class="advanced_done">
+                                <img src="./images/svg/done.svg" alt="Done">
+                                Парковочное место выбрано
+                            </div>
+                            <p class="subtitle">Название услуги</p>
+                            <p>Парковочное место №32</p>
+                            <p class="subtitle">Стоимость услуги</p>
+                            <p>500 000 ₽</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="popup-footer">
+                    <button data-action="confirm">Добавить</button>
+                    </div>
+            </div>
+        </div>
+        <div id="promotion" class="popup-block">
+            <div class="popup">
+                <div class="popup-header">
+                    <button data-action="close">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M6.0625 15L5 13.9375L8.9375 10L5 6.0625L6.0625 5L10 8.9375L13.9375 5L15 6.0625L11.0625 10L15 13.9375L13.9375 15L10 11.0625L6.0625 15Z" fill="#3C3D48"/>
+                        </svg>
+                    </button>
+                    <h2>Добавление скидки</h2>
+                </div>
+                <div class="popup-body">
+                    <div class="block">
+                        <div class="input">
+                            <p class="subtitle">Название скидки</p>
+                            <input type="text" name="promotion_name" placeholder="Скидка">
+                            <div id="promotions_types">
+                                <input id="promotions_type_1" type="radio" name="type" checked>
+                                <label for="promotions_type_1">₽/м<sup>2</sup></label>
+                                <input id="promotions_type_2" type="radio" name="type">
+                                <label for="promotions_type_2">₽</label>
+                                <input id="promotions_type_3" type="radio" name="type">
+                                <label for="promotions_type_3">%/м<sup>2</sup></label>
+                                <input id="promotions_type_4" type="radio" name="type">
+                                <label for="promotions_type_4">%</label>
+                            </div>
+                            <p class="subtitle">Значение</p>
+                            <input type="text" name="promotion_value" class="integer" placeholder="1 000 000 ₽/м2">
+                        </div>
+                    </div>
+                </div>
+                <div class="popup-footer">
+                    <button data-action="confirm">Добавить</button>
+                </div>
+            </div>
+        </div>
+        <script src="./js/jquery-3.7.1.min.js" type="text/javascript"></script>
+        <script src="./js/scripts.js" type="text/javascript"></script>
+    </body>
+</html>
